@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>产品质量证书查询</title>
+    <link rel="stylesheet" href="css/main.css">
+    
+</head>
+<body>
+    <div class="cert-query-card">
+        <div class="card-header">
+            <!-- target="_blank" 作用：点击后，在【新标签页打开首页】，原来证书页面保留 -->
+            <h1><a id="homeLink" target="_blank">河北帅辉管道设备有限公司</a></h1>
+            <p>产品质量证书查询信息</p>
+        </div>
+        <div class="info-item">
+            <div class="info-label">客户名称：</div>
+            <div class="info-value" id="custShow">浙江中茂石化工程有限公司</div>
+        </div>
+        <div class="info-item">
+            <div class="info-label">您查询的产品质量证书：</div>
+            <div class="info-value">为真实证书</div>
+        </div>
+        <div class="info-item">
+            <div class="info-label">证书编号：</div>
+            <div class="info-value" id="codeShow">20260320001</div>
+        </div>
+        <div class="info-item">
+            <div class="info-label">出厂日期：</div>
+            <div class="info-value" id="dateShow">2026年03月20日</div>
+        </div>
+        <div class="bottom-box">
+            <p><a id="homeLink2" class="company-name-link" target="_blank">河北帅辉管道设备有限公司</a></p>
+            <p>证书编号：<span id="bottomCode">20260320001</span></p>
+        </div>
+    </div>
+<script>
+// 自动判断地址
+let homeUrl = "home.html";
+// ==========【等以后部署GitHub Pages上线，这里改成你的线上地址】==========
+// homeUrl = "https://你的用户名.github.io/仓库名/home.html";
+document.getElementById("homeLink").href = homeUrl;
+document.getElementById("homeLink2").href = homeUrl;
+function getUrlParam(name) {
+    const reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+    const r = window.location.search.substr(1).match(reg);
+    if (r != null) return decodeURIComponent(r[2]);
+    return null;
+}
+const custName = getUrlParam('cust');
+const certCode = getUrlParam('code');
+const certDate = getUrlParam('date');
+if(custName){
+    document.getElementById('custShow').innerText = custName;
+}
+if(certCode){
+    document.getElementById('codeShow').innerText = certCode;
+    document.getElementById('bottomCode').innerText = certCode;
+}
+if(certDate){
+    document.getElementById('dateShow').innerText = certDate;
+}
+</script>
+</body>
+</html>
